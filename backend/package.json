@@ -4,9 +4,10 @@
 	"description": "University Enrollment System",
 	"main": "index.js",
 	"scripts": {
-		"dev": "tsx watch src/server.ts",
 		"build": "tsc",
-		"start": "node dist/server.js"
+		"start": "node dist/server.js",
+		"seed": "tsx src/seed.ts",
+		"dev": "npm run seed && tsx watch src/server.ts"
 	},
 	"keywords": [],
 	"author": "Martin P",
