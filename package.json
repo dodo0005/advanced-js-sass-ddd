@@ -26,5 +26,6 @@
 	"bugs": {
 		"url": "https://github.com/web-rest-api/advanced-js-sass-ddd/issues"
 	},
-	"homepage": "https://github.com/web-rest-api/advanced-js-sass-ddd#readme"
+	"homepage": "https://github.com/web-rest-api/advanced-js-sass-ddd#readme",
+	"keywords": []
 }
