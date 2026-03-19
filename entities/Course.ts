@@ -1,27 +1,32 @@
-import { CourseId } from "../value-objects/courseId"
-import { StudentId } from "../value-objects/student_id"
+import { CourseCode } from "../value-objects/coursecode"
+import { Credits } from "../value-objects/credits"
 
 export class Course {
-  private students: StudentId[] = []
-
   constructor(
-    public readonly id: CourseId,
-    private capacity: number
-  ) {}
-
-  enroll(studentId: StudentId) {
-    if (this.students.includes(studentId)) {
-      throw new Error("Student already enrolled")
+    public code: CourseCode,
+    public name: string,
+    public credits: Credits,
+    public capacity: number,
+    public enrolledCount: number = 0
+  ) {
+    if (capacity < 1 || capacity > 200) {
+      throw new Error("Invalid capacity")
     }
-
-    if (this.students.length >= this.capacity) {
-      throw new Error("Course is full")
-    }
-
-    this.students.push(studentId)
   }
 
-  getStudents() {
-    return this.students
+  enrollStudent() {
+    if (this.enrolledCount >= this.capacity) {
+      throw new Error("Course full")
+    }
+
+    this.enrolledCount++
+  }
+
+  is80PercentFull() {
+    return this.enrolledCount / this.capacity >= 0.8
+  }
+
+  isFull() {
+    return this.enrolledCount === this.capacity
   }
 }
